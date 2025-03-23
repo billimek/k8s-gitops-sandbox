@@ -1,0 +1,34 @@
+---
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: "3"
+
+set:
+  - pipefail
+shopt:
+  - globstar
+
+includes:
+  k8s-bootstrap: .taskfiles/k8s-bootstrap
+  talos: .taskfiles/talos
+
+vars:
+  K8S_DIR: "{{.ROOT_DIR}}/kubernetes"
+  SETUP_DIR: "{{.ROOT_DIR}}/setup"
+  KUBECONFIG: "{{.SETUP_DIR}}/kubeconfig"
+  MINIJINJA_CONFIG_FILE: "{{.ROOT_DIR}}/.minijinja.toml"
+  TALOSCONFIG: "{{.SETUP_DIR}}/talos/clusterconfig/talosconfig"
+
+env:
+  KUBECONFIG: "{{.KUBECONFIG}}"
+  MINIJINJA_CONFIG_FILE: "{{.MINIJINJA_CONFIG_FILE}}"
+  TALOSCONFIG: "{{.TALOSCONFIG}}"
+
+tasks:
+  default:
+    silent: true
+    cmd: task --list
+
+  noop:
+    internal: true
+    silent: true
+    cmd: noop() { :; }

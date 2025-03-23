@@ -1,0 +1,27 @@
+
+# Editors
+.vscode/
+# Trash
+.DS_Store
+Thumbs.db
+# Binaries
+bin
+/flux
+*.iso
+# Temp
+.temp*
+/.private/
+/.task/
+/.venv/
+Brewfile.lock.json
+# Kubernetes
+kubeconfig
+talosconfig
+# Other
+.env
+auth
+*.snap
+*.crt
+*.key
+.decrypted~*
+onepassword.env
