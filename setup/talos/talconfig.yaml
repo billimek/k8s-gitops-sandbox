@@ -1,6 +1,6 @@
 ---
 clusterName: home
-endpoint: https://10.2.0.50:6443
+endpoint: https://k8s-0:6443
 additionalApiServerCertSans:
   - k8s-0
   - k8s-0.home

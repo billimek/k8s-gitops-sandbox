@@ -33,11 +33,11 @@ tasks:
       - talosctl config info
     env:
       NODE_COUNT:
-        sh: talosctl config info --output json | jq --raw-output '.nodes | length'
+        sh: talosctl --talosconfig "{{.TALOSCONFIG}}" config info --output json | jq --raw-output '.nodes | length'
       # ROOK_DISK: nvme-Samsung_SSD_990_PRO_1TB
     cmds:
       - until kubectl wait nodes --for=condition=Ready=False --all --timeout=10m; do sleep 5; done
       # - op run --env-file {{.SETUP_DIR}}/bootstrap/bootstrap.env --no-masking -- minijinja-cli "{{.SETUP_DIR}}/bootstrap/templates/resources.yaml.j2" | kubectl apply --server-side --filename -
       - minijinja-cli "{{.SETUP_DIR}}/bootstrap/templates/resources.yaml.j2" | op inject | kubectl apply --server-side --filename -
-      - helmfile --quiet --file {{.SETUP_DIR}}/bootstrap/helmfile.yaml apply --skip-diff-on-install --suppress-diff
+      - helmfile --quiet --file {{.SETUP_DIR}}/bootstrap/helmfile.yaml apply --suppress-diff --skip-diff-on-install
       # - helmfile --quiet --file {{.SETUP_DIR}}/bootstrap/helmfile.yaml destroy --selector name=wipe-rook
