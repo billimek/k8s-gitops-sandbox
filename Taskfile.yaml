@@ -14,7 +14,7 @@ includes:
 vars:
   K8S_DIR: "{{.ROOT_DIR}}/kubernetes"
   SETUP_DIR: "{{.ROOT_DIR}}/setup"
-  KUBECONFIG: "{{.SETUP_DIR}}/kubeconfig"
+  KUBECONFIG: "{{.ROOT_DIR}}/kubeconfig"
   MINIJINJA_CONFIG_FILE: "{{.ROOT_DIR}}/.minijinja.toml"
   TALOSCONFIG: "{{.SETUP_DIR}}/talos/clusterconfig/talosconfig"
 

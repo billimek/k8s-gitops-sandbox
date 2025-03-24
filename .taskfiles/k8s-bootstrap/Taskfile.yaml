@@ -10,21 +10,21 @@ tasks:
         sh: talosctl --talosconfig "{{.TALOSCONFIG}}" config info --output json | jq --raw-output '.endpoints[]' | shuf -n 1
     preconditions:
       - which jq minijinja-cli talosctl
-      - test -f "${TALOSCONFIG}"
+      - test -f "{{.TALOSCONFIG}}"
       - talosctl config info
     cmds:
       - task: :talos:apply-clusterconfig
         vars:
           INSECURE: "true"
       - until talosctl --nodes {{.TALOS_CONTROLLER}} bootstrap; do sleep 5; done
-      - talosctl kubeconfig --nodes {{.TALOS_CONTROLLER}} --force --force-context-name "home" "${KUBECONFIG}"
+      - talosctl kubeconfig --nodes {{.TALOS_CONTROLLER}} --force --force-context-name "home" "{{.KUBECONFIG}}"
 
   apps:
     desc: Bootstrap Apps
     prompt: Bootstrap apps into Talos cluster?
     preconditions:
       - which op helmfile kubectl
-      - test -f "${TALOSCONFIG}"
+      - test -f "{{.TALOSCONFIG}}"
       - test -f {{.SETUP_DIR}}/bootstrap/helmfile.yaml
       # - test -f {{.SETUP_DIR}}/bootstrap/bootstrap.env
       - test -f {{.SETUP_DIR}}/bootstrap/templates/resources.yaml.j2
