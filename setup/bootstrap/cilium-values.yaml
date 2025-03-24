@@ -1,16 +1,16 @@
 ---
 autoDirectNodeRoutes: true
 bandwidthManager:
+  enabled: true
   bbr: true
-  enabled: true
-bgpControlPlane:
-  enabled: true
 bpf:
   datapathMode: netkit
   masquerade: true
   preallocateMaps: true
+bgpControlPlane:
+  enabled: true
 cgroup:
-  autoMount:
+  automount:
     enabled: false
   hostRoot: /sys/fs/cgroup
 cluster:
@@ -20,9 +20,6 @@ cni:
   exclusive: false
 dashboards:
   enabled: true
-  annotations:
-    grafana_folder: Cilium
-enableRuntimeDeviceDetection: true
 endpointRoutes:
   enabled: true
 gatewayAPI:
@@ -30,9 +27,9 @@ gatewayAPI:
   enableAlpn: true
   xffNumTrustedHops: 1
 ipam:
-  mode: "kubernetes"
+  mode: kubernetes
 ipv4NativeRoutingCIDR: 10.244.0.0/16
-k8sServiceHost: localhost
+k8sServiceHost: 127.0.0.1
 k8sServicePort: 7445
 kubeProxyReplacement: true
 kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
