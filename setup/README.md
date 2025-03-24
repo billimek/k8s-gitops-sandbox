@@ -29,6 +29,8 @@ sudo qm create 501 \
 
 * MAC address is hard-coded so that the dhcp server will assign the appropriate IP address
 * GPU passthrough (`--hostpci0`) is enabled for the Intel GVT-g device
+  * Because I will probably forget this, the `i915-GVTg_V5_1` mdev device is possible to use only because the BIOS setting for the GPU memory were increased from the default value to the max value.
+  * The benefit of using a 'larger' (smaller suffix number) mdev device is that it has more memory/compute capacity than the smaller mdev devices and will improve transocindg performance. See [here](https://blog.ktz.me/why-i-stopped-using-intel-gvt-g-on-proxmox/) and [here](https://github.com/intel/gvt-linux/wiki/GVTg_Setup_Guide#53-create-vgpu-kvmgt-only) for more information
 * additional scsi disk (`/dev/disk/by-id/wwn-0x5002538c000fc6fd`) is added for the ceph OSD
 
 ```shell
@@ -46,7 +48,7 @@ sudo qm create 502 \
   --efidisk0 "ssdtank-proxmox:1,efitype=4m" \
   --scsi0 "ssdtank-proxmox:200,backup=0,iothread=1,ssd=1,discard=on" \
   --ide2 tank-proxmox:iso/metal-amd64.iso,media=cdrom \
-  --hostpci0 "0000:00:02.0,mdev=i915-GVTg_V5_4" \
+  --hostpci0 "0000:00:02.0,mdev=i915-GVTg_V5_1,pcie=1" \
   --scsi1 "/dev/disk/by-id/wwn-0x5002538c000fc6fd,backup=0,iothread=1,ssd=1,discard=on"
 ```
 
