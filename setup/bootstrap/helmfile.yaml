@@ -24,16 +24,16 @@ releases:
     chart: cilium/cilium
     version: 1.17.2
     values:
-      - ../bootstrap/cilium-values.yaml
+      - templates/cilium-values.yaml.gotmpl
     needs:
       - monitoring/prometheus-operator-crds
 
   - name: coredns
-    namespace: kube-system
+    namespace: network
     chart: oci://ghcr.io/coredns/charts/coredns
     version: 1.39.1
     values:
-      - ../bootstrap/coredns-values.yaml
+      - templates/coredns-values.yaml.gotmpl
     needs:
       - kube-system/cilium
 
@@ -44,7 +44,7 @@ releases:
     values:
       - templates/cert-manager-values.yaml.gotmpl
     needs:
-      - kube-system/coredns
+      - network/coredns
 
   # - name: wipe-rook
   #   namespace: kube-system
