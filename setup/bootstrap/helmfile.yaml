@@ -72,6 +72,6 @@ releases:
     version: 0.18.0
     wait: false
     values:
-      - ../bootstrap/flux-operator-values.yaml
+      - ../bootstrap/flux-instance-values.yaml
     needs:
       - flux-system/flux-operator
