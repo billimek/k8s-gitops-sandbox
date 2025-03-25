@@ -8,6 +8,6 @@ metadata:
 spec:
   type: "oci"
   interval: 30m
-  url: oci://ghcr.io/coredns/charts/coredns
+  url: oci://ghcr.io/coredns/charts
   secretRef:
-      name: ghcr-auth
+    name: ghcr-auth
