@@ -2,6 +2,8 @@
 
 ## Physical devices (amd64)
 
+TBD
+
 ## Proxmox
 
 ### control plane node
@@ -52,7 +54,7 @@ sudo qm create 502 \
   --scsi1 "/dev/disk/by-id/wwn-0x5002538c000fc6fd,backup=0,iothread=1,ssd=1,discard=on"
 ```
 
-## talos
+## talos setup & bootstrapping
 
 (run from the repo root)
 
@@ -62,17 +64,16 @@ Use talhelper to generate the config files in the `clusterconfig` directory.
 task talos:generate-clusterconfig
 ```
 
-Boostrap the control-plane node
+Bootstrap the control-plane node. It may take some time for the cluster to be ready.
 
 ```shell
-# talosctl apply-config --talosconfig=./clusterconfig/talosconfig --nodes=10.2.0.50 --file=./clusterconfig/home-k8s-0.yaml --insecure
-# wait till the node reboots and is healthy
-task talos:apply-clusterconfig INSECURE=true
-talosctl bootstrap --talosconfig=./talos/clusterconfig/talosconfig --nodes=10.2.0.50
+task k8s-bootstrap:talos
 ```
 
-Bootstrap the worker node
+## kubernetes setup & bootstrapping
+
+Bootstrap the kubernetes cluster with required prerequisites (cilium CNI, CRDs, flux, etc).
 
 ```shell
-talosctl apply-config --talosconfig=./clusterconfig/talosconfig --nodes=10.2.0.51 --file=./clusterconfig/home-k8s-a.yaml --insecure
+task k8s-bootstrap:apps
 ```
