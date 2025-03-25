@@ -5,7 +5,6 @@ helmDefaults:
   wait: true
   waitForJobs: true
   timeout: 600
-  recreatePods: true
   force: true
 
 repositories:
@@ -38,14 +37,14 @@ releases:
     needs:
       - kube-system/cilium
 
-  # - name: cert-manager
-  #   namespace: cert-manager
-  #   chart: jetstack/cert-manager
-  #   version: v1.17.1
-  #   values:
-  #     - ../apps/cert-manager/cert-manager/app/values.yaml
-  #   needs:
-  #     - kube-system/coredns
+  - name: cert-manager
+    namespace: cert-manager
+    chart: jetstack/cert-manager
+    version: v1.17.1
+    values:
+      - ../bootstrap/cert-manager-values.yaml
+    needs:
+      - kube-system/coredns
 
   # - name: wipe-rook
   #   namespace: kube-system
@@ -56,21 +55,23 @@ releases:
   #   needs:
   #     - kube-system/coredns
 
-  # - name: flux-operator
-  #   namespace: flux-system
-  #   chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator
-  #   version: 0.18.0
-  #   values:
-  #     - ../apps/flux-system/flux-operator/app/values.yaml
-  #   needs:
-  #     - kube-system/wipe-rook
+  - name: flux-operator
+    namespace: flux-system
+    chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator
+    version: 0.18.0
+    values:
+      - ../bootstrap/flux-operator-values.yaml
+    needs:
+      - monitoring/prometheus-operator-crds
+    # needs:
+    #   - kube-system/wipe-rook
 
-  # - name: flux-instance
-  #   namespace: flux-system
-  #   chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-instance
-  #   version: 0.18.0
-  #   wait: false
-  #   values:
-  #     - ../apps/flux-system/flux-operator/instance/values.yaml
-  #   needs:
-  #     - flux-system/flux-operator
+  - name: flux-instance
+    namespace: flux-system
+    chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-instance
+    version: 0.18.0
+    wait: false
+    values:
+      - ../bootstrap/flux-operator-values.yaml
+    needs:
+      - flux-system/flux-operator
