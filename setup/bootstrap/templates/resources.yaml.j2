@@ -14,3 +14,12 @@ metadata:
 stringData:
   1password-credentials.json: op://Personal/bspprtu7bu7qlnodme2hbfuoh4/credential
   token: op://Personal/52okh3ubjhdu5cgeqfvvldsj2u/token
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ghcr-auth
+  namespace: flux-system
+stringData:
+  username: billimek
+  password: op://kubernetes/ghcr/password
