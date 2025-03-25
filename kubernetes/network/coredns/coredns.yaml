@@ -17,6 +17,11 @@ spec:
       repository: mirror.gcr.io/coredns/coredns
     replicaCount: 1 # TODO: expand to 2 when cluster is larger
     k8sAppLabelOverride: kube-dns
+    prometheus:
+      service:
+        enabled: true
+      monitor:
+        enabled: true
     serviceAccount:
       create: true
     service:
