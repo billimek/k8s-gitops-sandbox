@@ -42,7 +42,7 @@ releases:
     chart: jetstack/cert-manager
     version: v1.17.1
     values:
-      - ../bootstrap/cert-manager-values.yaml
+      - ../../kubernetes/cert-manager/values.yaml
     needs:
       - kube-system/coredns
 
