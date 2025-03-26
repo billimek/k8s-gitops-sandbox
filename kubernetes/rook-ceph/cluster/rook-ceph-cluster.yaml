@@ -14,6 +14,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: rook-ceph
+        namespace: flux-system
   values:
     monitoring:
       enabled: true
