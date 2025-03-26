@@ -1,5 +1,5 @@
 ---
-apiVersion: notification.toolkit.fluxcd.io/v1beta1
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
 metadata:
   name: home-cluster
@@ -27,7 +27,7 @@ spec:
     - "GitRepository/flux-system/flux-system configured"
   suspend: false
 ---
-apiVersion: notification.toolkit.fluxcd.io/v1beta1
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
 metadata:
   name: helmreleases
