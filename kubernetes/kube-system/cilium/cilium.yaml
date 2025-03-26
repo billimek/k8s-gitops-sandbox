@@ -119,3 +119,5 @@ spec:
           - NET_ADMIN
           - SYS_ADMIN
           - SYS_RESOURCE
+    socketLB:
+      hostNamespaceOnly: true # needed for tailscale (https://tailscale.com/kb/1236/kubernetes-operator#cilium-in-kube-proxy-replacement-mode)
