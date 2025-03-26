@@ -1,1 +1,1 @@
-{{ (fromYaml (readFile "../../../kubernetes/network/coredns/coredns.yaml")).spec.values | toYaml }}
+{{ (fromYaml (readFile "../../../kubernetes/kube-system/coredns/coredns.yaml")).spec.values | toYaml }}
