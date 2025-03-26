@@ -47,16 +47,16 @@ spec:
           operator: "Exists"
         - effect: "NoSchedule"
           operator: "Exists"
-      resources:
-        limits:
-          cpu: null
-    master:
-      resources:
-        limits:
-          cpu: null
-    gc:
-      resources:
-        limits:
-          cpu: null
+      # resources:
+      #   limits:
+      #     cpu: null
+    # master:
+    #   resources:
+    #     limits:
+    #       cpu: null
+    # gc:
+    #   resources:
+    #     limits:
+    #       cpu: null
     prometheus:
       enable: true
