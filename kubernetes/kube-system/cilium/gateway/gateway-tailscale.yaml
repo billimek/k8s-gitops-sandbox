@@ -7,6 +7,7 @@ metadata:
   namespace: kube-system
   annotations:
     tailscale.com/hostname: "gateway-tailscale"
+    tailscale.com/expose: "true"
 spec:
   gatewayClassName: cilium
   listeners:

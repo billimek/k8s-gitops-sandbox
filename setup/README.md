@@ -80,7 +80,5 @@ task k8s-bootstrap:apps
 
 ## TODOs
 
-* Handle volsync CRDs
-* Handle snapshot-controller installation prerequisite for volsync
 * Handle ingress2gateway?
 * 
