@@ -64,7 +64,7 @@ Use talhelper to generate the config files in the `clusterconfig` directory.
 task talos:generate-clusterconfig
 ```
 
-Bootstrap the control-plane node. It may take some time for the cluster to be ready.
+Bootstrap the talos nodes. It may take some time for the cluster to be ready.
 
 ```shell
 task k8s-bootstrap:talos
