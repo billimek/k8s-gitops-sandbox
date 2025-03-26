@@ -31,7 +31,12 @@ spec:
         mgr:
           mgr/crash/warn_recent_interval: "7200" # 2h
       cleanupPolicy:
-          confirmation: "yes-really-destroy-data" # TODO: remove this once cluster is live
+        confirmation: "yes-really-destroy-data" # TODO: remove this once cluster is live
+        sanitizeDisks:
+          method: quick
+          dataSource: zero
+          iteration: 1
+        allowUninstallWithVolumes: false
       crashCollector:
         disable: false
         daysToRetain: 30
