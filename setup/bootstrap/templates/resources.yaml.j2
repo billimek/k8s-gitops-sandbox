@@ -1,4 +1,4 @@
-{% for namespace in ["external-secrets", "flux-system", "monitoring"] %}
+{% for namespace in ["flux-system", "monitoring"] %}
 ---
 apiVersion: v1
 kind: Namespace
@@ -12,8 +12,8 @@ metadata:
   name: onepassword-secret
   namespace: kube-system
 stringData:
-  1password-credentials.json: op://Personal/bspprtu7bu7qlnodme2hbfuoh4/credential
-  token: op://Personal/52okh3ubjhdu5cgeqfvvldsj2u/token
+  1password-credentials.json: op://Personal/52okh3ubjhdu5cgeqfvvldsj2u/credentials-json-base64
+  token: op://Personal/bspprtu7bu7qlnodme2hbfuoh4/credential
 ---
 apiVersion: v1
 kind: Secret
