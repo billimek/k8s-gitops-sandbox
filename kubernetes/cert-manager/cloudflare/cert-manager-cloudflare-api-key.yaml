@@ -3,15 +3,16 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: discord-webhook
-  namespace: flux-system
+  name: cloudflare-api-key
+  namespace: cert-manager
 spec:
+  refreshInterval: 5m
   secretStoreRef:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: discord-webhook-secret
+    name: cloudflare-api-key
     creationPolicy: Owner
   dataFrom:
     - extract:
-        key: discord-webhook
+        key: cloudflare

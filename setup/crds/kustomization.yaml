@@ -3,4 +3,15 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+  # renovate: datasource=github-releases depName=external-secrets/external-secrets
   - https://raw.githubusercontent.com/external-secrets/external-secrets/v0.15.0/deploy/crds/bundle.yaml
+  # renovate: datasource=github-releases depName=kubernetes-csi/external-snapshotter
+  - https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v8.2.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+  # renovate: datasource=github-releases depName=kubernetes-csi/external-snapshotter
+  - https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v8.2.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+  # renovate: datasource=github-releases depName=kubernetes-csi/external-snapshotter
+  - https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v8.2.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
+  # renovate: datasource=github-releases depName=backube/volsync
+  - https://raw.githubusercontent.com/backube/volsync/v0.12.0/config/crd/bases/volsync.backube_replicationdestinations.yaml
+  # renovate: datasource=github-releases depName=backube/volsync
+  - https://raw.githubusercontent.com/backube/volsync/v0.12.0/config/crd/bases/volsync.backube_replicationsources.yaml
