@@ -73,6 +73,14 @@ controlPlane:
                           topologyKey: kubernetes.io/hostname
                           whenUnsatisfiable: ScheduleAnyway
 
+    # Enable MutatingAdmissionPolicy
+    - |-
+      cluster:
+        apiServer:
+          extraArgs:
+            runtime-config: admissionregistration.k8s.io/v1alpha1=true
+            feature-gates: MutatingAdmissionPolicy=true
+
     # Configure custom sysctls
     - |-
       machine:
