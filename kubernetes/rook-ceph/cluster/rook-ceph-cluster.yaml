@@ -114,3 +114,10 @@ spec:
           metadataPool:
             replicated:
               size: 1 # TODO: change this to 3 after the old cluster is removed
+        storageClass:
+          enabled: true
+          name: ceph-bucket
+          reclaimPolicy: Delete
+          volumeBindingMode: "Immediate"
+        ingress:
+          enabled: false
