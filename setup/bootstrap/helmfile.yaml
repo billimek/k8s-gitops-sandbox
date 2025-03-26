@@ -29,7 +29,7 @@ releases:
       - monitoring/prometheus-operator-crds
 
   - name: coredns
-    namespace: network
+    namespace: kube-system
     chart: oci://ghcr.io/coredns/charts/coredns
     version: 1.39.2
     values:
@@ -44,7 +44,7 @@ releases:
     values:
       - templates/cert-manager-values.yaml.gotmpl
     needs:
-      - network/coredns
+      - kube-system/coredns
 
   # - name: wipe-rook
   #   namespace: kube-system
