@@ -15,3 +15,6 @@ resources:
   - https://github.com/backube/volsync/raw/v0.12.0/config/crd/bases/volsync.backube_replicationdestinations.yaml
   # renovate: datasource=github-releases depName=backube/volsync
   - https://github.com/backube/volsync/raw/v0.12.0/config/crd/bases/volsync.backube_replicationsources.yaml
+  # renovate: datasource=github-releases depName=kubernetes-sigs/node-feature-discovery
+  - https://github.com/kubernetes-sigs/node-feature-discovery/raw/v0.17.2/deployment/helm/node-feature-discovery/crds/nfd-api-crds.yaml
+  
