@@ -40,7 +40,8 @@ spec:
         url: https://github.com/billimek/k8s-gitops-sandbox.git
         ref: refs/heads/main
         path: setup/flux/cluster
-        interval: 1h
+        pullSecret: ghcr-auth
+        interval: 5m # TODO: revisit if/when webhooks from github are enabled to make this 1h
       commonMetadata:
         labels:
           app.kubernetes.io/name: flux
