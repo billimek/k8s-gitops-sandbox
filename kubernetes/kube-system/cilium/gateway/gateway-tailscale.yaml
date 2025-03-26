@@ -5,11 +5,15 @@ kind: Gateway
 metadata:
   name: tailscale
   namespace: kube-system
-  annotations:
-    tailscale.com/hostname: "gateway-tailscale"
-    tailscale.com/expose: "true"
 spec:
   gatewayClassName: cilium
+  addresses:
+    - type: IPAddress
+      value: 100.127.102.113
+  infrastructure:
+    annotations:
+      tailscale.com/hostname: "gateway-tailscale"
+      tailscale.com/expose: "true"
   listeners:
     - name: http
       protocol: HTTP
