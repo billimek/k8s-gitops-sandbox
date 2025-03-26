@@ -38,3 +38,7 @@ resources:
   - https://github.com/kubernetes-sigs/gateway-api/raw/v1.2.1/config/crd/experimental/gateway.networking.k8s.io_referencegrants.yaml
   # renovate: datasource=github-releases depName=kubernetes-sigs/gateway-api
   - https://github.com/kubernetes-sigs/gateway-api/raw/v1.2.1/config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml
+
+  # rook-ceph
+  # renovate: datasource=github-releases depName=rook/rook
+  - https://github.com/rook/rook/raw/v1.16.5/deploy/examples/crds.yaml
