@@ -41,4 +41,4 @@ resources:
 
   # rook-ceph
   # renovate: datasource=github-releases depName=rook/rook
-  - https://github.com/rook/rook/raw/v1.16.5/deploy/examples/crds.yaml
+  - https://github.com/rook/rook/raw/v1.16.6/deploy/examples/crds.yaml
