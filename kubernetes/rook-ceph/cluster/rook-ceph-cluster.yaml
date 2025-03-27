@@ -20,7 +20,7 @@ spec:
       enabled: true
       createPrometheusRules: true
     toolbox:
-      enabled: false
+      enabled: true
     cephClusterSpec:
       cephConfig:
         global:
@@ -48,10 +48,7 @@ spec:
         urlPrefix: /
         ssl: false
         prometheusEndpoint: http://prometheus-operated.monitoring.svc.cluster.local:9090 # TODO: fix this
-      mon:
-        count: 1 # TODO: change this to 3 after the old cluster is removed
       mgr:
-        count: 1 # TODO: change this to 3 after the old cluster is removed
         modules:
           - name: diskprediction_local
             enabled: true
@@ -78,8 +75,8 @@ spec:
             memory: 2Gi
           limits:
             memory: 4Gi
-      disruptionManagement:
-        managePodBudgets: false
+      # disruptionManagement:
+      #   managePodBudgets: false
       storage:
         useAllNodes: true
         useAllDevices: true
@@ -90,7 +87,7 @@ spec:
         spec:
           failureDomain: host
           replicated:
-            size: 1 # TODO: change this to 3 after the old cluster is removed
+            size: 3
         storageClass:
           enabled: true
           name: ceph-block
@@ -105,13 +102,13 @@ spec:
             compression_algorithm: zstd
             imageFormat: "2"
             imageFeatures: layering,fast-diff,object-map,deep-flatten,exclusive-lock
-            # csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
-            # csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph
-            # csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
-            # csi.storage.k8s.io/controller-expand-secret-namespace: rook-ceph
-            # csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
-            # csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph
-            # csi.storage.k8s.io/fstype: ext4
+            csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
+            csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph
+            csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
+            csi.storage.k8s.io/controller-expand-secret-namespace: rook-ceph
+            csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
+            csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph
+            csi.storage.k8s.io/fstype: ext4
     cephBlockPoolsVolumeSnapshotClass:
       enabled: true
       name: csi-ceph-blockpool
