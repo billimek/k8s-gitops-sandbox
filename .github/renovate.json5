@@ -5,7 +5,7 @@
     "docker:enableMajor",
     "helpers:pinGitHubActionDigests",
     "github>billimek/k8s-gitops-sandbox//.renovate/autoMerge.json5",
-    "github>billimek/k8s-gitops-sandbox//.renovate/customManagers.json5",
+    // "github>billimek/k8s-gitops-sandbox//.renovate/customManagers.json5",
     "github>billimek/k8s-gitops-sandbox//.renovate/grafanaDashboards.json5",
     "github>billimek/k8s-gitops-sandbox//.renovate/groups.json5",
     "github>billimek/k8s-gitops-sandbox//.renovate/labels.json5",
@@ -21,13 +21,12 @@
     "prEditedNotification",
     "prIgnoreNotification",
   ],
-  ignorePaths: [
-    "**/*.sops.*",
-    "**/resources/**",
-  ],
+  // ignorePaths: [
+  //   "**/*.sops.*",
+  //   "**/resources/**",
+  // ],
   flux: {
-    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml$"],
-    ignorePaths: ["**/charts/**"],
+    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml$"]
   },
   "helm-values": {
     fileMatch: ["(^|/)kubernetes/.+\\.ya?ml$"]
