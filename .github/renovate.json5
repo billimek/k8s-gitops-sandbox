@@ -26,7 +26,8 @@
     "**/resources/**",
   ],
   flux: {
-    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml$"]
+    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml$"],
+    ignorePaths: ["**/charts/**"],
   },
   "helm-values": {
     fileMatch: ["(^|/)kubernetes/.+\\.ya?ml$"]
