@@ -1,17 +1,10 @@
-{% for namespace in ["flux-system", "monitoring"] %}
+{% for namespace in ["flux-system", "monitoring", "rook-ceph"] %}
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: {{ namespace }}
 {% endfor %}
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: rook-ceph
-  labels:
-    pod-security.kubernetes.io/enforce: privileged
 ---
 apiVersion: v1
 kind: Secret
