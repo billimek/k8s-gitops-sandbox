@@ -5,7 +5,7 @@ kind: Kustomization
 resources:
   # external-secrets
   # renovate: datasource=github-releases depName=external-secrets/external-secrets
-  - https://github.com/external-secrets/external-secrets/raw/v0.15.0/deploy/crds/bundle.yaml
+  - https://github.com/external-secrets/external-secrets/raw/v0.15.1/deploy/crds/bundle.yaml
 
   # external-snapshotter
   # renovate: datasource=github-releases depName=kubernetes-csi/external-snapshotter
