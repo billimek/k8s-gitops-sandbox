@@ -49,17 +49,17 @@
       datasourceTemplate: "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
       versioningTemplate: "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
       extractVersionTemplate: "{{#if extractVersion}}{{{extractVersion}}}{{else}}^(?<version>.*)${{/if}}",
-    },
-    {
-      "customType": "regex",
-      "fileMatch": ["(^|/)kubernetes/.+\\.ya?ml$"],
-      "matchStrings": [
-        "chart:\\s*\\n\\s+spec:\\s*\\n\\s+chart:\\s*(?<depName>.+?)\\s*\\n\\s+version:\\s*(?<currentValue>.+?)\\s*\\n\\s+sourceRef:"
-      ],
-      "datasourceTemplate": "helm",
-      "depNameTemplate": "{{{depName}}}",
-      "extractVersionTemplate": "^v(?<version>.*)$",
-      "versioningTemplate": "semver"
     }
+    // {
+    //   "customType": "regex",
+    //   "fileMatch": ["(^|/)kubernetes/.+\\.ya?ml$"],
+    //   "matchStrings": [
+    //     "chart:\\s*\\n\\s+spec:\\s*\\n\\s+chart:\\s*(?<depName>.+?)\\s*\\n\\s+version:\\s*(?<currentValue>.+?)\\s*\\n\\s+sourceRef:"
+    //   ],
+    //   "datasourceTemplate": "helm",
+    //   "depNameTemplate": "{{{depName}}}",
+    //   "extractVersionTemplate": "^v(?<version>.*)$",
+    //   "versioningTemplate": "semver"
+    // }
   ],
 }
