@@ -73,9 +73,9 @@ spec:
           #               resources:
           #                 limits:
           #                   memory: 2Gi
-            target:
-              kind: Deployment
-              name: (kustomize-controller|helm-controller|source-controller)
+          #   target:
+          #     kind: Deployment
+          #     name: (kustomize-controller|helm-controller|source-controller)
           # Enable in-memory kustomize builds
           - patch: |
               - op: add
