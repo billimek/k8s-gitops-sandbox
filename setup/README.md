@@ -8,6 +8,8 @@ TBD
 
 ### control plane node
 
+TODO: This replaces [k3s-0](https://github.com/billimek/dotfiles/tree/master/hosts/k3s-0)
+
 * MAC address is hard-coded so that the dhcp server will assign the appropriate IP address
 
 ```shell
@@ -54,6 +56,63 @@ sudo qm create 502 \
   --scsi1 "/dev/disk/by-id/wwn-0x5002538c000fc6fd,backup=0,iothread=1,ssd=1,discard=on"
 ```
 
+TODO: temporary worker nodes for testing rook-ceph, remove once testing is done
+
+```shell
+sudo qm create 502 \
+  --name k8s-a \
+  --ostype l26 \
+  --machine q35 \
+  --memory 4096 \
+  --cores 4 \
+  --cpu host \
+  --agent "enabled=1,fstrim_cloned_disks=1" \
+  --bios ovmf \
+  --net0 "model=virtio,macaddr=BC:24:11:F1:D5:9B,bridge=brk8s20" \
+  --scsihw virtio-scsi-single \
+  --efidisk0 "ssdtank-proxmox:1,efitype=4m" \
+  --scsi0 "ssdtank-proxmox:200,backup=0,iothread=1,ssd=1,discard=on" \
+  --ide2 tank-proxmox:iso/metal-amd64.iso,media=cdrom \
+  --hostpci0 "0000:00:02.0,mdev=i915-GVTg_V5_1,pcie=1" \
+  --scsi1 "ssdtank-proxmox:50,backup=0,iothread=1,ssd=1,discard=on"
+```
+
+```shell
+sudo qm create 503 \
+  --name k8s-b \
+  --ostype l26 \
+  --machine q35 \
+  --memory 4096 \
+  --cores 4 \
+  --cpu host \
+  --agent "enabled=1,fstrim_cloned_disks=1" \
+  --bios ovmf \
+  --net0 "model=virtio,macaddr=BC:24:11:F1:D5:9C,bridge=brk8s20" \
+  --scsihw virtio-scsi-single \
+  --efidisk0 "ssdtank-proxmox:1,efitype=4m" \
+  --scsi0 "ssdtank-proxmox:200,backup=0,iothread=1,ssd=1,discard=on" \
+  --ide2 tank-proxmox:iso/metal-amd64.iso,media=cdrom \
+  --scsi1 "ssdtank-proxmox:50,backup=0,iothread=1,ssd=1,discard=on"
+```
+
+```shell
+sudo qm create 504 \
+  --name k8s-c \
+  --ostype l26 \
+  --machine q35 \
+  --memory 4096 \
+  --cores 4 \
+  --cpu host \
+  --agent "enabled=1,fstrim_cloned_disks=1" \
+  --bios ovmf \
+  --net0 "model=virtio,macaddr=BC:24:11:F1:D5:9D,bridge=brk8s20" \
+  --scsihw virtio-scsi-single \
+  --efidisk0 "ssdtank-proxmox:1,efitype=4m" \
+  --scsi0 "ssdtank-proxmox:200,backup=0,iothread=1,ssd=1,discard=on" \
+  --ide2 tank-proxmox:iso/metal-amd64.iso,media=cdrom \
+  --scsi1 "ssdtank-proxmox:50,backup=0,iothread=1,ssd=1,discard=on"
+```
+
 ## talos setup & bootstrapping
 
 (run from the repo root)
@@ -77,8 +136,3 @@ Bootstrap the kubernetes cluster with required prerequisites (cilium CNI, CRDs, 
 ```shell
 task k8s-bootstrap:apps
 ```
-
-## TODOs
-
-* Handle ingress2gateway?
-* 
