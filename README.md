@@ -14,6 +14,7 @@ See [setup/README.md](setup/README.md) for instructions on how to set up & boots
 - [ ] test volsync backups & restores
 - [ ] ensure that test certs from cert-manager are generated & used
 - [ ] test rook volume resizing
+- [ ] test talos-backup & restore
 - [ ] test automatic device discovery & movement (probably use coral to do this)
 - [ ] test frigate end-to-end
 - [ ] implement tailscale control plane access
