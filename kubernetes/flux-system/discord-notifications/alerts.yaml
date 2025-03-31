@@ -26,7 +26,9 @@ spec:
     - "Dependencies do not meet ready condition, retrying in 30s"
     - "read: connection timed out"
     - "GitRepository/flux-system/flux-system configured"
-    - "kustomization/core-crds.flux-system"
+    - "CustomResourceDefinition/clustersecretstores.external-secrets.io configured"
+    - "CustomResourceDefinition/externalsecrets.external-secrets.io configured"
+    - "CustomResourceDefinition/secretstores.external-secrets.io configured"
   suspend: false
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/notification.toolkit.fluxcd.io/alert_v1beta3.json
@@ -50,16 +52,10 @@ spec:
       namespace: 'flux-system'
       name: '*'
     - kind: HelmRelease
-      namespace: 'logs'
-      name: '*'
-    - kind: HelmRelease
       namespace: 'kube-system'
       name: '*'
     - kind: HelmRelease
       namespace: 'monitoring'
-      name: '*'
-    - kind: HelmRelease
-      namespace: 'network'
       name: '*'
     - kind: HelmRelease
       namespace: 'rook-ceph'
