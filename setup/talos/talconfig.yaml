@@ -58,6 +58,29 @@ nodes:
       - deviceSelector:
           hardwareAddr: bc:24:11:*
         dhcp: true
+  - hostname: k8s-i
+    nodeAnnotations:
+      installerImage: '{{ .MachineConfig.MachineInstall.InstallImage }}'
+    controlPlane: false
+    ipAddress: 10.2.0.59
+    installDisk: /dev/nvme0n1
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: 98:fa:9b:04:47:b9 # formerly k3s-a
+        dhcp: true
+    schematic:
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/nut-client
+    extensionServices:
+      - name: nut-client
+        # configFiles:
+        #   - content: MONITOR upsmonHost 1 remote pass password
+        #     mountPath: /usr/local/etc/nut/upsmon.conf
+        environment:
+          - UPS_NAME=ups
+
 
 # Global patches
 patches:
