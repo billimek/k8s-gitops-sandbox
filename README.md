@@ -8,11 +8,11 @@ See [setup/README.md](setup/README.md) for instructions on how to set up & boots
 
 ## TODOs
 
-- [ ] system-upgrade-controller
-- [ ] test lb & external ingress with *.t.eviljungle.com domain
-- [ ] test lb & tailscale ingress with *.ts.eviljungle.com domain
+- [x] system-upgrade-controller
+- [x] test lb & tailscale ingress with *.t.eviljungle.com domain
 - [ ] test volsync backups & restores
-- [ ] ensure that test certs from cert-manager are generated & used
+- [ ] test & configure NUT UPS monitoring stuff with talos
+- [x] ensure that test certs from cert-manager are generated & used
 - [ ] test rook volume resizing
 - [ ] test talos-backup & restore
 - [ ] test automatic device discovery & movement (probably use coral to do this)
