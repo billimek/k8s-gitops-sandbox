@@ -14,7 +14,7 @@ See [setup/README.md](setup/README.md) for instructions on how to set up & boots
 - [x] ~~test & configure NUT UPS monitoring stuff with talos~~ - will tackle this with pods and some other solution
 - [x] ensure that test certs from cert-manager are generated & used
 - [ ] test rook volume resizing
-- [ ] test talos-backup & restore
+- [x] test talos-backup & restore
 - [ ] test automatic device discovery & movement (probably use coral to do this)
 - [ ] test frigate end-to-end
 - [ ] implement tailscale control plane access
