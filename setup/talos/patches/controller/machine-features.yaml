@@ -6,5 +6,4 @@ machine:
         - os:admin
         - os:etcd:backup
       allowedKubernetesNamespaces:
-        - actions-runner-system
-        - kube-tools
+        - kube-system
