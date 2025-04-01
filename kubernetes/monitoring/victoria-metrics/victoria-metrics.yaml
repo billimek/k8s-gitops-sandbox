@@ -63,7 +63,7 @@ spec:
             - ReadWriteOnce
           resources:
             requests:
-              storage: 10Gi # TODO: change this back to 60Gi once the old cluster is removed
+              storage: 15Gi # TODO: change this back to 60Gi once the old cluster is removed
         resources:
           limits:
             memory: 2Gi
