@@ -13,7 +13,7 @@ See [setup/README.md](setup/README.md) for instructions on how to set up & boots
 - [ ] test volsync backups & restores
 - [x] ~~test & configure NUT UPS monitoring stuff with talos~~ - will tackle this with pods and some other solution
 - [x] ensure that test certs from cert-manager are generated & used
-- [ ] test rook volume resizing
+- [x] test rook volume resizing
 - [x] test talos-backup & restore
 - [ ] test automatic device discovery & movement (probably use coral to do this)
 - [ ] test frigate end-to-end
