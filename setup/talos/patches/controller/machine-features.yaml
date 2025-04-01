@@ -4,6 +4,7 @@ machine:
       enabled: true
       allowedRoles:
         - os:admin
+        - os:etcd:backup
       allowedKubernetesNamespaces:
         - actions-runner-system
         - kube-tools
