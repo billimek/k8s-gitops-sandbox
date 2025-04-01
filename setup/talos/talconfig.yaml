@@ -68,19 +68,6 @@ nodes:
       - deviceSelector:
           hardwareAddr: 98:fa:9b:04:47:b9 # formerly k3s-a
         dhcp: true
-    schematic:
-      customization:
-        systemExtensions:
-          officialExtensions:
-            - siderolabs/nut-client
-    extensionServices:
-      - name: nut-client
-        # configFiles:
-        #   - content: MONITOR upsmonHost 1 remote pass password
-        #     mountPath: /usr/local/etc/nut/upsmon.conf
-        environment:
-          - UPS_NAME=ups
-
 
 # Global patches
 patches:
