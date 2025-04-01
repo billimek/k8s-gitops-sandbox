@@ -42,3 +42,7 @@ resources:
   # rook-ceph
   # renovate: datasource=github-releases depName=rook/rook
   - https://github.com/rook/rook/raw/v1.16.6/deploy/examples/crds.yaml
+
+  # system-upgrade-controller
+  # renovate: datasource=github-releases depName=rancher/system-upgrade-controller
+  - https://github.com/rancher/system-upgrade-controller/releases/download/v0.15.2/crd.yaml
