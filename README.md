@@ -10,7 +10,7 @@ See [setup/README.md](setup/README.md) for instructions on how to set up & boots
 
 - [x] system-upgrade-controller
 - [x] test lb & tailscale ingress with *.t.eviljungle.com domain
-- [ ] test volsync backups & restores
+- [x] test volsync backups & restores
 - [x] ~~test & configure NUT UPS monitoring stuff with talos~~ - will tackle this with pods and some other solution
 - [x] ensure that test certs from cert-manager are generated & used
 - [x] test rook volume resizing
