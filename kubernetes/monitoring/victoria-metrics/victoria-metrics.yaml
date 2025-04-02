@@ -275,10 +275,10 @@ spec:
       enabled: true
 
     kubeEtcd:
-      enabled: true
-      service:
-        selector:
-          component: kube-apiserver 
+      enabled: false
+      # service:
+      #   selector:
+      #     component: kube-apiserver
 
     kubeScheduler:
       enabled: true
