@@ -127,7 +127,7 @@ spec:
 
                 {{ if ne .Annotations.summary ""}}**Summary:** {{ .Annotations.summary }} {{ else if ne .Annotations.message ""}}**Message:** {{ .Annotations.message }} {{ else if ne .Annotations.description ""}}**Description:** {{ .Annotations.description }}{{ end }}
 
-                **Details:**
+                🏷 Labels:
                    {{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`
                    {{ end }}
 
@@ -260,10 +260,6 @@ spec:
 
     kubeControllerManager:
       enabled: true
-      # endpoints:
-      #   - 192.168.4.2
-      #   - 192.168.4.3
-      #   - 192.168.4.4
       vmScrape:
         spec:
           endpoints:
@@ -280,6 +276,9 @@ spec:
 
     kubeEtcd:
       enabled: true
+      service:
+        selector:
+          component: kube-apiserver 
 
     kubeScheduler:
       enabled: true
@@ -295,7 +294,7 @@ spec:
                 serverName: localhost
 
     kubeProxy:
-      enabled: true
+      enabled: false
 
   valuesFrom:
   - kind: Secret
