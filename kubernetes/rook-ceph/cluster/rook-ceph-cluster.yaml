@@ -57,6 +57,9 @@ spec:
             enabled: true
           - name: rook
             enabled: true
+      mon:
+        count: 1 # TODO: change to 3 after migration
+        allowMultiplePerNode: true # TODO: change to false after migration
       network:
         provider: host
         connections:
