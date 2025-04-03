@@ -65,8 +65,6 @@ resources:
   # │ cnpg             │
   # └──────────────────┘
   # renovate: datasource=github-releases depName=cloudnative-pg/cloudnative-pg
-  # - https://github.com/cloudnative-pg/charts/raw/cloudnative-pg-v0.23.2/charts/cloudnative-pg/templates/crds/crds.yaml
-  # - https://github.com/james-callahan/cloudnative-pg-kustomize/raw/main/crds/kustomization.yaml # jank
   - https://github.com/cloudnative-pg/cloudnative-pg/raw/release-1.25/config/crd/bases/postgresql.cnpg.io_backups.yaml
   - https://github.com/cloudnative-pg/cloudnative-pg/raw/release-1.25/config/crd/bases/postgresql.cnpg.io_clusterimagecatalogs.yaml
   - https://github.com/cloudnative-pg/cloudnative-pg/raw/release-1.25/config/crd/bases/postgresql.cnpg.io_clusters.yaml
