@@ -111,7 +111,7 @@ spec:
 
     persistence:
       config:
-        storageClass: "ceph-block"
+        storageClass: "nfs-k8s"
         accessMode: ReadWriteOnce
         size: "5Gi" # TODO: change this to 60Gi whence old cluster is removed
         advancedMounts:
@@ -121,7 +121,7 @@ spec:
             code-server:
               - path: /config
       hass-cache:
-        storageClass: "ceph-block"
+        storageClass: "nfs-k8s"
         accessMode: ReadWriteOnce
         size: "1Gi"
         advancedMounts:
