@@ -74,7 +74,7 @@ sudo qm create 502 \
   --scsi0 "ssdtank-proxmox:200,backup=0,iothread=1,ssd=1,discard=on" \
   --ide2 tank-proxmox:iso/metal-amd64.iso,media=cdrom \
   --hostpci0 "0000:00:02.0,mdev=i915-GVTg_V5_1,pcie=1" \
-  --scsi1 "ssdtank-proxmox:50,backup=0,iothread=1,ssd=1,discard=on"
+  --scsi1 "ssdtank-proxmox:100,backup=0,iothread=1,ssd=1,discard=on"
 ```
 
 ```shell
@@ -92,7 +92,7 @@ sudo qm create 503 \
   --efidisk0 "ssdtank-proxmox:1,efitype=4m" \
   --scsi0 "ssdtank-proxmox:200,backup=0,iothread=1,ssd=1,discard=on" \
   --ide2 tank-proxmox:iso/metal-amd64.iso,media=cdrom \
-  --scsi1 "ssdtank-proxmox:50,backup=0,iothread=1,ssd=1,discard=on"
+  --scsi1 "ssdtank-proxmox:100,backup=0,iothread=1,ssd=1,discard=on"
 ```
 
 ```shell
@@ -110,7 +110,7 @@ sudo qm create 504 \
   --efidisk0 "ssdtank-proxmox:1,efitype=4m" \
   --scsi0 "ssdtank-proxmox:200,backup=0,iothread=1,ssd=1,discard=on" \
   --ide2 tank-proxmox:iso/metal-amd64.iso,media=cdrom \
-  --scsi1 "ssdtank-proxmox:50,backup=0,iothread=1,ssd=1,discard=on"
+  --scsi1 "ssdtank-proxmox:100,backup=0,iothread=1,ssd=1,discard=on"
 ```
 
 ## talos setup & bootstrapping
