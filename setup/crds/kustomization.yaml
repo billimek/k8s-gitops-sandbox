@@ -65,4 +65,4 @@ resources:
   # │ cnpg             │
   # └──────────────────┘
   # renovate: datasource=github-releases depName=cloudnative-pg/cloudnative-pg
-  - https://github.com/cloudnative-pg/charts/raw/cloudnative-pg-v0.23.2/charts/cloudnative-pg/templates/crds/crds.yaml
+  # - https://github.com/cloudnative-pg/charts/raw/cloudnative-pg-v0.23.2/charts/cloudnative-pg/templates/crds/crds.yaml
