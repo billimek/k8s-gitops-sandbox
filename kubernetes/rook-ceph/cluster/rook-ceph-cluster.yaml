@@ -44,8 +44,8 @@ spec:
       dashboard:
         enabled: true
         urlPrefix: /
-        ssl: false
-        # prometheusEndpoint: http://prometheus-operated.monitoring.svc.cluster.local:9090 # TODO: fix this
+        ssl: true
+        prometheusEndpoint: http://vmagent-stack.monitoring.svc.cluster.local:8429
       mgr:
         count: 1
         modules:
@@ -79,6 +79,17 @@ spec:
         useAllDevices: true
         config:
           osdsPerDevice: "1"
+
+    ingress:
+      dashboard:
+        host:
+          name: &host "rook.t.eviljungle.com" # TODO: change after migration
+          path: "/"
+          pathType: Prefix
+        tls:
+        - hosts:
+            - *host
+        ingressClassName: nginx-tailscale
 
     cephBlockPools:
       - name: ceph-blockpool
