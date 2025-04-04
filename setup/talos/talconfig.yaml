@@ -58,6 +58,16 @@ nodes:
       - deviceSelector:
           hardwareAddr: bc:24:11:*
         dhcp: true
+  - hostname: k8s-h
+    nodeAnnotations:
+      installerImage: '{{ .MachineConfig.MachineInstall.InstallImage }}'
+    controlPlane: false
+    ipAddress: 10.2.0.58
+    installDisk: /dev/nvme0n1
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: 68:1d:ef:34:d9:c7 # formerly k3s-h
+        dhcp: true
   - hostname: k8s-i
     nodeAnnotations:
       installerImage: '{{ .MachineConfig.MachineInstall.InstallImage }}'
@@ -71,11 +81,11 @@ nodes:
 
 # Global patches
 patches:
-  - "@./patches/global/machine-dns.yaml"     # Host DNS settings
-  - "@./patches/global/machine-files.yaml"   # Spegel/NFS Mount
-  - "@./patches/global/machine-install.yaml" # Less security, more performance
-  - "@./patches/global/machine-network.yaml" # Search Domain
-  - "@./patches/global/machine-sysctls.yaml" # Network Tweaks
+  - "@./patches/global/machine-dns.yaml"     # host DNS settings
+  - "@./patches/global/machine-files.yaml"   # spegel/NFS Mount
+  - "@./patches/global/machine-install.yaml" # less security, more performance
+  - "@./patches/global/machine-network.yaml" # search Domain
+  - "@./patches/global/machine-sysctls.yaml" # network tweaks
   - "@./patches/global/machine-udev.yaml"    # udev settings
 
 controlPlane:
@@ -85,15 +95,10 @@ controlPlane:
         officialExtensions:
           - siderolabs/intel-ucode
           - siderolabs/qemu-guest-agent
-          # - siderolabs/tailscale
-  # extensionServices:
-  # - name: tailscale
-  #   environment:
-  #     - TS_AUTHKEY=${TS_AUTHKEY}
   patches:
-    - "@./patches/controller/admission-controller-patch.yaml" # makes rook-ceph work
-    - "@./patches/controller/cluster.yaml" 
-    - "@./patches/controller/machine-features.yaml"
+    - "@./patches/controller/admission-controller-patch.yaml" # makes rook-ceph and anything else needing elevated permissions work
+    - "@./patches/controller/cluster.yaml" # control-plane tweaks
+    - "@./patches/controller/machine-features.yaml" # enabled API server access from the kube-system namespace
 
 worker:
   schematic:
