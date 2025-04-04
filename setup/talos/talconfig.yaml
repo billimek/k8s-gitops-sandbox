@@ -28,6 +28,11 @@ nodes:
       - deviceSelector:
           hardwareAddr: bc:24:11:*
         dhcp: true
+    schematic:
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/qemu-guest-agent
   - hostname: k8s-a
     nodeAnnotations:
       installerImage: '{{ .MachineConfig.MachineInstall.InstallImage }}'
@@ -38,6 +43,11 @@ nodes:
       - deviceSelector:
           hardwareAddr: bc:24:11:*
         dhcp: true
+    schematic:
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/qemu-guest-agent
   - hostname: k8s-b
     nodeAnnotations:
       installerImage: '{{ .MachineConfig.MachineInstall.InstallImage }}'
@@ -94,7 +104,6 @@ controlPlane:
       systemExtensions:
         officialExtensions:
           - siderolabs/intel-ucode
-          - siderolabs/qemu-guest-agent
   patches:
     - "@./patches/controller/admission-controller-patch.yaml" # makes rook-ceph and anything else needing elevated permissions work
     - "@./patches/controller/cluster.yaml" # control-plane tweaks
@@ -107,4 +116,3 @@ worker:
         officialExtensions:
           - siderolabs/i915
           - siderolabs/intel-ucode
-          - siderolabs/qemu-guest-agent
