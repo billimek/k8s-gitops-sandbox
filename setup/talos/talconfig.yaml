@@ -58,6 +58,11 @@ nodes:
       - deviceSelector:
           hardwareAddr: bc:24:11:*
         dhcp: true
+    schematic:
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/qemu-guest-agent
   - hostname: k8s-c
     nodeAnnotations:
       installerImage: '{{ .MachineConfig.MachineInstall.InstallImage }}'
@@ -68,6 +73,11 @@ nodes:
       - deviceSelector:
           hardwareAddr: bc:24:11:*
         dhcp: true
+    schematic:
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/qemu-guest-agent
   - hostname: k8s-h
     nodeAnnotations:
       installerImage: '{{ .MachineConfig.MachineInstall.InstallImage }}'
