@@ -161,9 +161,10 @@ spec:
         - hosts:
           - vmagent.t.eviljungle.com # TODO: change this once the old cluster is removed
       spec:
-        additionalScrapeConfigs:
-          name: victoria-metrics-k8s-stack-helm-values
-          key: additionalScrapeConfigs.yaml 
+        # TODO: re-enable this once home-assistant is running on the new cluster
+        # additionalScrapeConfigs:
+        #   name: victoria-metrics-k8s-stack-helm-values
+        #   key: additionalScrapeConfigs.yaml 
         inlineScrapeConfig: |
           - job_name: 'ipmi'
             metrics_path: '/metrics'
