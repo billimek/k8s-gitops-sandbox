@@ -115,7 +115,7 @@ TODO: This replaces k3s-e
 * CPU: AMD Ryzen 3 3200G - 4 core
 * RAM: 32GB
 * Disk: host - 256GB - `/dev/sdb`
-* Disk: SSD for ceph = 2TB - `/dev/sda` - **note this is `/dev/sda`**
+* Disk: SSD for ceph = 2TB - `/dev/sda` - **note this is `/dev/sda`** - (`/dev/disk/by-id/wwn-0x5002538c000e0a55`)
 
 ### k8s-f
 
