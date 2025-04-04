@@ -20,4 +20,4 @@ spec:
     operatorConfig:
       hostname: "tailscale-operator-talos" # TODO: change this once the old cluster is removed
     apiServerProxyConfig:
-      mode: "noauth"
+      mode: "true"
