@@ -165,6 +165,12 @@ This is a worker node, bare-metal
 TODO: This replaces `k3s-a`
 
 * MAC: `98:fa:9b:04:47:b9`
+* IP: 10.2.0.59
+* CPU: Intel i5-8500T - 6 core
+* RAM: 16GB
+* Disk: host - 128GB - `/dev/nvme0n1`
+* Disk: SSD for ceph - 1TB `/dev/sda` - (`/dev/disk/by-id/wwn-0x5002538800374ff9`)
+* GPU: iGPU UHD 630 - but no driver in talos?
 
 ## sandbox testing
 
