@@ -181,7 +181,7 @@ sudo qm create 502 \
   --name k8s-a \
   --ostype l26 \
   --machine q35 \
-  --memory 4096 \
+  --memory 8192 \
   --cores 4 \
   --cpu host \
   --agent "enabled=1,fstrim_cloned_disks=1" \
@@ -200,7 +200,7 @@ sudo qm create 503 \
   --name k8s-b \
   --ostype l26 \
   --machine q35 \
-  --memory 4096 \
+  --memory 8192 \
   --cores 4 \
   --cpu host \
   --agent "enabled=1,fstrim_cloned_disks=1" \
@@ -218,7 +218,7 @@ sudo qm create 504 \
   --name k8s-c \
   --ostype l26 \
   --machine q35 \
-  --memory 4096 \
+  --memory 8192 \
   --cores 4 \
   --cpu host \
   --agent "enabled=1,fstrim_cloned_disks=1" \
