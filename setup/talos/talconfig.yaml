@@ -9,9 +9,9 @@ clusterName: home
 endpoint: https://k8s-0:6443
 
 additionalApiServerCertSans:
-  - k8s-0
   - k8s-0.home
-  - k8s-0.drake-eel.ts.net
+  - tailscale-operator-talos.drake-eel.ts.net
+  - tailscale-operator.drake-eel.ts.net
 
 # Disable built-in Flannel to use Cilium
 cniConfig:
