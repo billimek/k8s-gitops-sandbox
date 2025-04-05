@@ -68,15 +68,14 @@ spec:
       ui:
         enabled: true
         rollOutPods: true
-        frontend:
-          ingress:
-            enabled: true
-            className: "nginx-tailscale"
+        ingress:
+          enabled: true
+          className: "nginx-tailscale"
+          hosts:
+            - hubble.t.eviljungle.com # TODO: revisit
+          tls:
             hosts:
               - hubble.t.eviljungle.com # TODO: revisit
-            tls:
-              hosts:
-                - hubble.t.eviljungle.com # TODO: revisit
     ipam:
       mode: kubernetes
     ipv4NativeRoutingCIDR: 10.244.0.0/16
