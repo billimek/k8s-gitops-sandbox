@@ -30,6 +30,7 @@ metadata:
   name: home-assistant
   namespace: default
 spec:
+  paused: true # TODO: remove this once the old cluster is removed
   sourcePVC: home-assistant-config
   trigger:
     schedule: "40 4 * * *"

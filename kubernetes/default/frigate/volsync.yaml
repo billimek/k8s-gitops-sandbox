@@ -29,6 +29,7 @@ metadata:
   name: frigate
   namespace: default
 spec:
+  paused: true # TODO: remove this once the old cluster is removed
   sourcePVC: frigate-config
   trigger:
     schedule: "0 4 * * *"
