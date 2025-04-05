@@ -19,7 +19,7 @@ See [setup/README.md](setup/README.md) for instructions on how to set up & boots
 - [x] test frigate end-to-end
 - [x] implement tailscale control plane access
 - [x] test rook object storage
-- [ ] copy & refactor all monitoring apps (e.g. loki/vector/grafana/influxdb/etc)
+- [x] copy & refactor all monitoring apps (e.g. loki/vector/grafana/influxdb/etc)
 - [ ] copy & refactor all 'default' apps, including database (cnpg?)
 - [ ] develop migration plan and runbook for actual cutover
 - [ ] address all outstanding TODOs in the files in this repo
