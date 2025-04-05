@@ -23,7 +23,7 @@ spec:
     - "snapshot-validation-webhook configured"
     - "volsync configured"
     - "Health check passed in"
-    - "Dependencies do not meet ready condition, retrying in 30s"
+    - "Dependencies do not meet ready condition, retrying in"
     - "read: connection timed out"
     - "GitRepository/flux-system/flux-system configured"
     - "CustomResourceDefinition/clustersecretstores.external-secrets.io configured"
