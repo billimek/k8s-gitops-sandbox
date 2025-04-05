@@ -74,3 +74,9 @@ resources:
   - https://github.com/cloudnative-pg/cloudnative-pg/raw/release-1.25/config/crd/bases/postgresql.cnpg.io_publications.yaml
   - https://github.com/cloudnative-pg/cloudnative-pg/raw/release-1.25/config/crd/bases/postgresql.cnpg.io_scheduledbackups.yaml
   - https://github.com/cloudnative-pg/cloudnative-pg/raw/release-1.25/config/crd/bases/postgresql.cnpg.io_subscriptions.yaml
+
+  # ┌──────────────────┐
+  # │ emqx             │
+  # └──────────────────┘
+  # renovate: datasource=github-releases depName=emqx/emqx-operator
+  - https://github.com/emqx/emqx-operator/releases/download/2.2.28/crds.yaml
