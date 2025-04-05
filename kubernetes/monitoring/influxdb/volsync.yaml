@@ -38,8 +38,8 @@ spec:
     pruneIntervalDays: 10
     repository: influxdb-restic-secret
     cacheCapacity: 2Gi
-    volumeSnapshotClassName: csi-rbdplugin-snapclass
-    storageClassName: rook-ceph-block
+    volumeSnapshotClassName: csi-ceph-blockpool
+    storageClassName: ceph-block
     moverSecurityContext:
       runAsUser: 1500
       runAsGroup: 1500
