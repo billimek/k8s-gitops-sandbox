@@ -18,7 +18,7 @@ See [setup/README.md](setup/README.md) for instructions on how to set up & boots
 - [x] test automatic device discovery & movement (probably use coral to do this)
 - [x] test frigate end-to-end
 - [x] implement tailscale control plane access
-- [ ] test rook object storage
+- [x] test rook object storage
 - [ ] copy & refactor all monitoring apps (e.g. loki/vector/grafana/influxdb/etc)
 - [ ] copy & refactor all 'default' apps, including database (cnpg?)
 - [ ] develop migration plan and runbook for actual cutover
