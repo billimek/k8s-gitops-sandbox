@@ -100,7 +100,7 @@ spec:
           repeat_interval: 12h
           routes:
           - matchers:
-            - alertname=~"WatchDog|InfoInhibitor|KubeMemoryOvercommit"
+            - alertname=~"WatchDog|InfoInhibitor|KubeMemoryOvercommit|CephNodeNetworkPacketDrops"
             receiver: 'blackhole'
           - matchers:
             - severity=~"warning|critical"
