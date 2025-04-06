@@ -47,3 +47,15 @@ tasks:
         cmd: kubectl delete pods --all-namespaces --field-selector status.phase={{.ITEM.PHASE}} --ignore-not-found=true
     preconditions:
       - which kubectl
+
+  suspend-flux:
+    desc: Suspend flux kusomization for cluster-apps
+    preconditions:
+      - which flux
+    cmd: flux --namespace flux-system suspend kustomization cluster-apps
+
+  resume-flux:
+    desc: Resume flux kusomization for cluster-apps
+    preconditions:
+      - which flux
+    cmd: flux --namespace flux-system resume kustomization cluster-apps
