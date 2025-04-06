@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/budimanjojo/talhelper/master/pkg/config/schemas/talconfig.json
 ---
 # renovate: datasource=docker depName=ghcr.io/siderolabs/installer
-talosVersion: v1.9.5
+talosVersion: v1.9.2
 # renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
-kubernetesVersion: v1.32.3
+kubernetesVersion: v1.32.1
 
 clusterName: home
 endpoint: https://k8s-0:6443
@@ -48,7 +48,7 @@ nodes:
         systemExtensions:
           officialExtensions:
             - siderolabs/qemu-guest-agent
-  # TODO: temp sandbox testing node
+  # TODO: k8s-b is a temp sandbox testing node
   - hostname: k8s-b
     nodeAnnotations:
       installerImage: '{{ .MachineConfig.MachineInstall.InstallImage }}'
@@ -74,7 +74,7 @@ nodes:
   #     - deviceSelector:
   #         hardwareAddr: 70:85:c2:3f:7b:4d
   #       dhcp: true
-  # TODO: temp sandbox testing node
+  # TODO: k8s-c is a temp sandbox testing node
   - hostname: k8s-c
     nodeAnnotations:
       installerImage: '{{ .MachineConfig.MachineInstall.InstallImage }}'
