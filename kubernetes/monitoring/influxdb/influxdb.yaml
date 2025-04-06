@@ -20,7 +20,7 @@ spec:
   values:
     image:
       repository: "influxdb"
-      tag: "1.11.8-alpine"
+      tag: "2.7.11-alpine"
     service:
       type: LoadBalancer
       loadBalancerIP: 10.0.5.2 # TODO: change this once the old cluster is removed
