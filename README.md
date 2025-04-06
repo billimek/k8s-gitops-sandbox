@@ -20,6 +20,7 @@ See [setup/README.md](setup/README.md) for instructions on how to set up & boots
 - [x] implement tailscale control plane access
 - [x] test rook object storage
 - [x] copy & refactor all monitoring apps (e.g. loki/vector/grafana/influxdb/etc)
+- [ ] test database restore from real copy
 - [ ] copy & refactor all 'default' apps, including database (cnpg?)
-- [ ] develop migration plan and runbook for actual cutover
+- [x] develop migration plan and runbook for actual cutover
 - [ ] address all outstanding TODOs in the files in this repo
