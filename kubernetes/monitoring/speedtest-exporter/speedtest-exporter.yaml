@@ -36,4 +36,4 @@ spec:
         ipFamilyPolicy: PreferDualStack
         ports:
           metrics:
-            port: 9798
+            port: 9516
