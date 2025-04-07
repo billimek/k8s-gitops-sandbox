@@ -100,16 +100,16 @@ spec:
         accessMode: ReadWriteOnce
         size: "1Gi" # TODO: change this to 55Gi once old cluster is removed
       # Separate PVC for cache to avoid backing up cache files
-      plex-cache:
-        storageClass: "ceph-block"
-        accessMode: ReadWriteOnce
-        size: "1Gi" # TODO: change this to 55Gi once old cluster is removed
-        globalMounts:
-          - path: /config/Library/Application Support/Plex Media Server/Cache
-      logs:
-        type: emptyDir
-        globalMounts:
-          - path: /config/Library/Application Support/Plex Media Server/Logs
+      # plex-cache:
+      #   storageClass: "ceph-block"
+      #   accessMode: ReadWriteOnce
+      #   size: "1Gi" # TODO: change this to 55Gi once old cluster is removed
+      #   globalMounts:
+      #     - path: /config/Library/Application Support/Plex Media Server/Cache
+      # logs:
+      #   type: emptyDir
+      #   globalMounts:
+      #     - path: /config/Library/Application Support/Plex Media Server/Logs
       nfs-nas-media:
         type: nfs
         server: nas.home
