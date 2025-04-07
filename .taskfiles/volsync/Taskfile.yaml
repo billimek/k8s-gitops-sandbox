@@ -110,7 +110,7 @@ tasks:
       - flux --namespace flux-system suspend kustomization cluster-apps
       - flux --namespace {{.NS}} suspend helmrelease {{.APP}}
       - kubectl --namespace {{.NS}} scale {{.CONTROLLER}}/{{.APP}} --replicas 0
-      - kubectl --namespace {{.NS}} wait pod --for=delete --selector="app.kubernetes.io/name={{.APP}}" --timeout=5m
+      - kubectl --namespace {{.NS}} wait pod --for=delete --selector="app.kubernetes.io/instance={{.APP}}" --timeout=5m
       # Restore
       - minijinja-cli {{.VOLSYNC_TASK_RESOURCES_DIR}}/replicationdestination.yaml.j2 | kubectl apply --server-side --filename -
       - until kubectl --namespace {{.NS}} get job/volsync-dst-{{.APP}}-manual &>/dev/null; do sleep 5; done
@@ -120,4 +120,4 @@ tasks:
       - flux --namespace flux-system resume kustomization cluster-apps
       - flux --namespace {{.NS}} resume helmrelease {{.APP}}
       - flux --namespace {{.NS}} reconcile helmrelease {{.APP}} --force
-      - kubectl --namespace {{.NS}} wait pod --for=condition=ready --selector="app.kubernetes.io/name={{.APP}}" --timeout=5m
+      - kubectl --namespace {{.NS}} wait pod --for=condition=ready --selector="app.kubernetes.io/instance={{.APP}}" --timeout=5m
