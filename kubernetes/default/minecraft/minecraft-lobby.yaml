@@ -48,7 +48,7 @@ spec:
       spigetResources:
         - 28140
         - 6245
-        - 14754
+        # - 14754
         - 102931
         - 4441 # hibernate
       modUrls:
