@@ -6,6 +6,7 @@ metadata:
   name: jellyseerr
   namespace: default
 spec:
+  suspend: true # TODO: remove this once the old cluster is removed
   interval: 15m
   chart:
     spec:
