@@ -20,6 +20,8 @@ spec:
     matchExpressions:
       - key: kubernetes.io/hostname
         operator: Exists
+  tolerations:
+    - {key: node-role.kubernetes.io/control-plane, effect: NoSchedule, operator: Exists}
   upgrade:
     image: ghcr.io/jfroy/tnu:0.4.1
     args:
