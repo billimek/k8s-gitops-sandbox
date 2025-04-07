@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: mc-lobby
+  name: minecraft-lobby
   namespace: default
 spec:
   suspend: true
@@ -21,6 +21,7 @@ spec:
     image:
       repository: ghcr.io/itzg/minecraft-server
       tag: 2025.4.0
+    fullnameOverride: minecraft-lobby
     persistence:
       storageClass: "ceph-block"
       dataDir:
@@ -73,14 +74,14 @@ spec:
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: mc-lobby-restic
+  name: minecraft-lobby-restic
   namespace: default
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: mc-lobby-restic-secret
+    name: minecraft-lobby-restic-secret
     creationPolicy: Owner
     template:
       engineVersion: v2
@@ -97,16 +98,16 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: mc-lobby
+  name: minecraft-lobby
   namespace: default
 spec:
-  sourcePVC: mc-lobby-minecraft-datadir
+  sourcePVC: minecraft-lobby-datadir
   trigger:
     schedule: "20 4 * * *"
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 10
-    repository: mc-lobby-restic-secret
+    repository: minecraft-lobby-restic-secret
     cacheCapacity: 5Gi
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
