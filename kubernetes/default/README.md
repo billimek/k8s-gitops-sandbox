@@ -1,8 +1,14 @@
 # audiobookshelf
 
+like plex, but for audiobooks
+
 # cloudnative-pg
 
+postgresql operator for kubernetes
+
 # echo-server
+
+echo server for testing
 
 # emqx
 
@@ -39,6 +45,8 @@ Installs [frigate](https://github.com/blakeblackshear/frigate/): Realtime object
 
 # jellyseerr
 
+jellyseerr is a self-hosted media request management tool for Plex and Jellyfin
+
 # minecraft
 
 Using the [minecraft server](https://hub.docker.com/r/itzg/minecraft-server) container images to run multiple different minecraft servers.
@@ -68,7 +76,12 @@ Rules-engine for automations
 
 # prowlarr
 
+prowlarr is a movie/tv show indexer manager for sonarr/radarr
+
+
 # qbittorrent
+
+qbittorrent is a torrent client
 
 # radarr
 
@@ -87,6 +100,8 @@ Rules-engine for automations
 * [readarr.yaml](readarr/readarr.yaml)
 
 # recyclarr
+
+recyclarr is a tool to help manage and maintain your sonarr/radarr library
 
 # sabnzbd
 
@@ -111,6 +126,8 @@ Rules-engine for automations
 * [sonarr.yaml](sonarr/sonarr.yaml)
 
 # tautulli
+
+tautulli is a plex monitoring tool
 
 # tesla_dashcam
 
