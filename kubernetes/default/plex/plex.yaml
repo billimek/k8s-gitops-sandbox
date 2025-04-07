@@ -31,7 +31,6 @@ spec:
       plex:
         pod:
           securityContext:
-            runAsNonRoot: true
             runAsUser: 1000
             runAsGroup: 1000
             fsGroup: 1000
@@ -103,14 +102,14 @@ spec:
             app:
               - path: /config
       # Separate PVC for cache to avoid backing up cache files
-      plex-cache:
-        storageClass: "ceph-block"
-        accessMode: ReadWriteOnce
-        size: "1Gi" # TODO: change this to 55Gi once old cluster is removed
-        advancedMounts:
-          plex:
-            app:
-              - path: /config/Library/Application Support/Plex Media Server/Cache
+      # plex-cache:
+      #   storageClass: "ceph-block"
+      #   accessMode: ReadWriteOnce
+      #   size: "1Gi" # TODO: change this to 55Gi once old cluster is removed
+      #   advancedMounts:
+      #     plex:
+      #       app:
+      #         - path: /config/Library/Application Support/Plex Media Server/Cache
       logs:
         type: emptyDir
         advancedMounts:
