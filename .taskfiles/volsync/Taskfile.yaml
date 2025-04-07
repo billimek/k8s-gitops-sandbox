@@ -76,7 +76,7 @@ tasks:
           APP: '{{splitList "," .ITEM | last}}'
 
   restore:
-    desc: Restore an app [NS=default] [APP=required] [PREVIOUS=required]
+    desc: Restore an app [NS=default] [APP=required] [PREVIOUS=required] [RESTORE_AS_OF=optional RFC3339 timestamp]
     preconditions:
       - which flux kubectl minijinja-cli
       - test -f {{.VOLSYNC_TASK_RESOURCES_DIR}}/replicationdestination.yaml.j2
@@ -88,10 +88,13 @@ tasks:
       NS: '{{.NS | default "default"}}'
       CONTROLLER:
         sh: kubectl --namespace {{.NS}} get deployment {{.APP}} &>/dev/null && echo deployment || echo statefulset
+      TIMESTAMP:
+        sh: date -u +"%Y-%m-%dT%H:%M:%SZ"
     env:
       NS: "{{.NS}}"
       APP: "{{.APP}}"
       PREVIOUS: "{{.PREVIOUS}}"
+      RESTORE_AS_OF: "{{.RESTORE_AS_OF | default .TIMESTAMP}}"
       CLAIM:
         sh: kubectl --namespace {{.NS}} get replicationsources/{{.APP}} --output=jsonpath="{.spec.sourcePVC}"
       ACCESS_MODES:
