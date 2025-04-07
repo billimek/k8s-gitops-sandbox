@@ -84,22 +84,22 @@ spec:
       viewDistance: 24
       whitelist: "billimek,Nadorrior,Sandbragger,tkws88,KhrysPBacon,MackCulley,Guydon,Shivanater"
       worldSaveName: 'world-20250218-thunderdome'
-      extraPorts:
-        - name: map
-          containerPort: 8100
-          service:
-            enabled: true
-            type: ClusterIP
-            port: 8100
-          ingress:
-            enabled: true
-            ingressClassName: nginx
-            hosts:
-              - name: minecraft-survival2-map.t.eviljungle.com # TODO: revisit
-                path: /
-            tls:
-            - hosts:
-              - minecraft-survival2-map.t.eviljungle.com # TODO: revisit
+      # extraPorts:
+      #   - name: map
+      #     containerPort: 8100
+      #     service:
+      #       enabled: true
+      #       type: ClusterIP
+      #       port: 8100
+      #     ingress:
+      #       enabled: true
+      #       ingressClassName: nginx
+      #       hosts:
+      #         - name: minecraft-survival2-map.t.eviljungle.com # TODO: revisit
+      #           path: /
+      #       tls:
+      #       - hosts:
+      #         - minecraft-survival2-map.t.eviljungle.com # TODO: revisit
 ---
 # yaml-language-server: $schema=https://crd.movishell.pl/external-secrets.io/externalsecret_v1beta1.json
 apiVersion: external-secrets.io/v1beta1

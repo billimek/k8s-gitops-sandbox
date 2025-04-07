@@ -83,22 +83,22 @@ spec:
       type: PAPER
       version: "LATEST"
       worldSaveName: "1.21-20240629-5"
-      extraPorts:
-        - name: map
-          containerPort: 8100
-          service:
-            enabled: true
-            type: ClusterIP
-            port: 8100
-          ingress:
-            enabled: true
-            ingressClassName: nginx-tailscale
-            hosts:
-              - name: mcsv-map.t.eviljungle.com # TODO: revisit
-                path: /
-            tls:
-            - hosts:
-              - mcsv-map.t.eviljungle.com # TODO: revisit
+      # extraPorts:
+      #   - name: map
+      #     containerPort: 8100
+      #     service:
+      #       enabled: true
+      #       type: ClusterIP
+      #       port: 8100
+      #     ingress:
+      #       enabled: true
+      #       ingressClassName: nginx-tailscale
+      #       hosts:
+      #         - name: mcsv-map.t.eviljungle.com # TODO: revisit
+      #           path: /
+      #       tls:
+      #       - hosts:
+      #         - mcsv-map.t.eviljungle.com # TODO: revisit
 ---
 # yaml-language-server: $schema=https://crd.movishell.pl/external-secrets.io/externalsecret_v1beta1.json
 apiVersion: external-secrets.io/v1beta1
