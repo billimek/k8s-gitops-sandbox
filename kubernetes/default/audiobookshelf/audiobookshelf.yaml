@@ -73,6 +73,7 @@ spec:
                 memory: 500Mi
     service:
       app:
+        primary: true
         controller: audiobookshelf
         ports:
           http:
@@ -83,7 +84,7 @@ spec:
         enabled: true
         # ensure that external DNS (cloudflare) has an entry for this directed to the router
         # ensure that internal DNS for this zone (coredns) has an entry for this directed to nginx LB IP
-        ingressClassName: nginx
+        className: nginx
         annotations:
           nginx.ingress.kubernetes.io/custom-http-errors: "400,404,500,502,503,504"  # Using a smaller set than the default to fix javascript issues with overseer
         hosts:
@@ -91,31 +92,36 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
-                identifier: app
-                port: http
+                service:
+                  identifier: app
+                  port: http
         tls:
           - hosts:
             - *host
       tailscale:
         enabled: true
-        ingressClassName: nginx-tailscale
+        className: nginx-tailscale
         hosts:
           - host: *host
             paths:
               - path: /
                 pathType: Prefix
-                identifier: app
-                port: http
+                service:
+                  identifier: app
+                  port: http
         tls:
           - hosts:
               - *host
 
     persistence:
       config:
-        enabled: true
         storageClass: "ceph-block"
-        size: 1Gi
-        mountPath: /config
+        accessMode: ReadWriteOnce
+        size: "1Gi"
+        globalMounts:
+          - path: /config
+
+
       cache:
         type: emptyDir
         globalMounts:
