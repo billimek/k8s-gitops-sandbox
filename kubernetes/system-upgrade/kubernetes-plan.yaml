@@ -11,7 +11,7 @@ spec:
   concurrency: 1
   postCompleteDelay: 30s
   exclusive: true
-  serviceAccountName: system-upgrade-controller
+  serviceAccountName: system-upgrade
   secrets:
     - name: system-upgrade-controller
       path: /var/run/secrets/talos.dev
