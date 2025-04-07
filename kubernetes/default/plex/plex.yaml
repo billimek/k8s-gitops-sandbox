@@ -109,7 +109,7 @@ spec:
       logs:
         type: emptyDir
         globalMounts:
-          - path: /config/Library/Application Support/Plex Media Server/Cache
+          - path: /config/Library/Application Support/Plex Media Server/Logs
       nfs-nas-media:
         type: nfs
         server: nas.home
