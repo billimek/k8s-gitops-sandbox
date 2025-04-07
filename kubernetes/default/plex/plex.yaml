@@ -31,6 +31,7 @@ spec:
       plex:
         pod:
           securityContext:
+            runAsNonRoot: true
             runAsUser: 1000
             runAsGroup: 1000
             fsGroup: 1000
@@ -130,10 +131,10 @@ spec:
           plex:
             app:
               - path: /transcode
-      tmp:
-        enabled: true
-        type: emptyDir
-        medium: Memory
+      # tmp:
+      #   enabled: true
+      #   type: emptyDir
+      #   medium: Memory
 
     ingress:
       app:
