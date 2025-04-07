@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: mcbr
+  name: minecraft-bedrock
   namespace: default
 spec:
   suspend: true
@@ -18,6 +18,7 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    fullnameOverride: minecraft-bedrock
     persistence:
       storageClass: "ceph-block"
       dataDir:
@@ -50,19 +51,19 @@ spec:
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: mcbr-restic
+  name: minecraft-bedrock-restic
   namespace: default
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: mcbr-restic-secret
+    name: minecraft-bedrock-restic-secret
     creationPolicy: Owner
     template:
       engineVersion: v2
       data:
-        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/SANDBOX-mcbr' # TODO: revisit
+        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/SANDBOX-minecraft-bedrock' # TODO: revisit
         RESTIC_PASSWORD: '{{ .RESTIC_PASSWORD }}'
         AWS_ACCESS_KEY_ID: '{{ .MINIO_ACCESS_KEY }}'
         AWS_SECRET_ACCESS_KEY: '{{ .MINIO_SECRET_KEY }}'
@@ -74,16 +75,16 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: mcbr
+  name: minecraft-bedrock
   namespace: default
 spec:
-  sourcePVC: mcbr-minecraft-bedrock-datadir
+  sourcePVC: minecraft-bedrock-datadir
   trigger:
     schedule: "10 4 * * *"
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 10
-    repository: mcbr-restic-secret
+    repository: minecraft-bedrock-restic-secret
     cacheCapacity: 10Gi
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block

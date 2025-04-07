@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: mcsv2
+  name: minecraft-survival2
   namespace: default
 spec:
   suspend: true
@@ -21,6 +21,7 @@ spec:
     image:
       repository: ghcr.io/itzg/minecraft-server
       tag: 2025.4.0
+    fullnameOverride: minecraft-survival2
     strategyType: Recreate
     persistence:
       storageClass: "ceph-block"
@@ -94,29 +95,29 @@ spec:
             enabled: true
             ingressClassName: nginx
             hosts:
-              - name: mcsv2-map.t.eviljungle.com # TODO: revisit
+              - name: minecraft-survival2-map.t.eviljungle.com # TODO: revisit
                 path: /
             tls:
             - hosts:
-              - mcsv2-map.t.eviljungle.com # TODO: revisit
+              - minecraft-survival2-map.t.eviljungle.com # TODO: revisit
 ---
 # yaml-language-server: $schema=https://crd.movishell.pl/external-secrets.io/externalsecret_v1beta1.json
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: mcsv2-restic
+  name: minecraft-survival2-restic
   namespace: default
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: mcsv2-restic-secret
+    name: minecraft-survival2-restic-secret
     creationPolicy: Owner
     template:
       engineVersion: v2
       data:
-        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/SANDBOX-mcsv2' # TODO: revisit
+        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/SANDBOX-minecraft-survival2' # TODO: revisit
         RESTIC_PASSWORD: '{{ .RESTIC_PASSWORD }}'
         AWS_ACCESS_KEY_ID: '{{ .MINIO_ACCESS_KEY }}'
         AWS_SECRET_ACCESS_KEY: '{{ .MINIO_SECRET_KEY }}'
@@ -128,16 +129,16 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: mcsv2
+  name: minecraft-survival2
   namespace: default
 spec:
-  sourcePVC: mcsv2-minecraft-datadir
+  sourcePVC: minecraft-survival2-datadir
   trigger:
     schedule: "30 4 * * *"
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 10
-    repository: mcsv2-restic-secret
+    repository: minecraft-survival2-restic-secret
     cacheCapacity: 20Gi
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block

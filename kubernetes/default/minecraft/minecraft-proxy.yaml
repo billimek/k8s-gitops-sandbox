@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: waterfall
+  name: minecraft-proxy
   namespace: default
 spec:
   suspend: false
@@ -21,6 +21,7 @@ spec:
     image:
       repository: itzg/bungeecord
       tag: 2025.4.0
+    fullnameOverride: minecraft-proxy
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000
@@ -32,8 +33,6 @@ spec:
         cpu: 50m
       limits:
         memory: 500Mi
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: "waterfall-minecraft-proxy-config"
     extraEnv:
       SPIGET_PLUGINS: "78915"
     minecraftProxy:
@@ -74,19 +73,19 @@ spec:
         servers:
           lobby:
             motd: '&1eviljungle lobby'
-            address: mc-lobby-minecraft:25565
+            address: minecraft-lobby:25565
             restricted: false
           creative:
             motd: 'creative server'
-            address: mc-minecraft:25565
+            address: minecraft-creative:25565
             restricted: false
           survival:
             motd: 'Survival SMP'
-            address: mcsv-minecraft:25565
+            address: minecraft-survival:25565
             restricted: false
           survival2:
             motd: 'Public Survival EZ-mode SMP'
-            address: mcsv2-minecraft:25565
+            address: minecraft-survival2:25565
             restricted: false
         listeners:
         - query_port: 25577

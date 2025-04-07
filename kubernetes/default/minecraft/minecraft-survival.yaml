@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: mcsv
+  name: minecraft-survival
   namespace: default
 spec:
   suspend: true
@@ -21,6 +21,7 @@ spec:
     image:
       repository: ghcr.io/itzg/minecraft-server
       tag: 2025.4.0
+    fullnameOverride: minecraft-survival
     strategyType: Recreate
     persistence:
       storageClass: "ceph-block"
@@ -103,19 +104,19 @@ spec:
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: mcsv-restic
+  name: minecraft-survival-restic
   namespace: default
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: mcsv-restic-secret
+    name: minecraft-survival-restic-secret
     creationPolicy: Owner
     template:
       engineVersion: v2
       data:
-        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/SANDBOX-mcsv' # TODO: revisit
+        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/SANDBOX-minecraft-survival' # TODO: revisit
         RESTIC_PASSWORD: '{{ .RESTIC_PASSWORD }}'
         AWS_ACCESS_KEY_ID: '{{ .MINIO_ACCESS_KEY }}'
         AWS_SECRET_ACCESS_KEY: '{{ .MINIO_SECRET_KEY }}'
@@ -127,16 +128,16 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: mcsv
+  name: minecraft-survival
   namespace: default
 spec:
-  sourcePVC: mcsv-minecraft-datadir
+  sourcePVC: minecraft-survival-datadir
   trigger:
     schedule: "10 5 * * *"
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 10
-    repository: mcsv-restic-secret
+    repository: minecraft-survival-restic-secret
     cacheCapacity: 40Gi
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block

@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: mc
+  name: minecraft-creative
   namespace: default
 spec:
   suspend: true
@@ -21,6 +21,7 @@ spec:
     image:
       repository: ghcr.io/itzg/minecraft-server
       tag: 2025.4.0
+    fullnameOverride: minecraft-creative
     strategyType: Recreate
     persistence:
       storageClass: "ceph-block"
@@ -89,19 +90,19 @@ spec:
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: mc-restic
+  name: minecraft-creative-restic
   namespace: default
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: mc-restic-secret
+    name: minecraft-creative-restic-secret
     creationPolicy: Owner
     template:
       engineVersion: v2
       data:
-        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/SANDBOX-mc' # TODO: revisit
+        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/SANDBOX-minecraft-creative' # TODO: revisit
         RESTIC_PASSWORD: '{{ .RESTIC_PASSWORD }}'
         AWS_ACCESS_KEY_ID: '{{ .MINIO_ACCESS_KEY }}'
         AWS_SECRET_ACCESS_KEY: '{{ .MINIO_SECRET_KEY }}'
@@ -113,16 +114,16 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: mc
+  name: minecraft-creative
   namespace: default
 spec:
-  sourcePVC: mc-minecraft-datadir
+  sourcePVC: minecraft-creative-datadir
   trigger:
     schedule: "50 4 * * *"
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 10
-    repository: mc-restic-secret
+    repository: minecraft-creative-restic-secret
     cacheCapacity: 30Gi
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
