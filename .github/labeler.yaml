@@ -7,10 +7,10 @@ area/docs:
       - any-glob-to-any-file:
           - "README.md"
 area/github:
-  - changed-files:
-      - any-glob-to-any-file:
-          - ".github/**/*"
-          - "!.github/renovaterc.json5"
+  - all:
+    - changed-files:
+      - any-glob-to-any-file: '.github/**/*'
+      - all-globs-to-all-files: '!.github/renovaterc.json5'
 area/kubernetes:
   - changed-files:
       - any-glob-to-any-file: "kubernetes/**/*"
