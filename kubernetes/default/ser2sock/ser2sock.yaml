@@ -6,6 +6,7 @@ metadata:
   name: ser2sock
   namespace: default
 spec:
+  suspend: true # TODO: remove this once the old cluster is removed
   interval: 1h
   chart:
     spec:
@@ -23,6 +24,16 @@ spec:
     remediation:
       retries: 3
   values:
+    defaultPodOptions:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: nutech.feature.node.kubernetes.io/alarmdecoder
+                    operator: In
+                    values:
+                      - "true"
     controllers:
       main:
         containers:
@@ -36,15 +47,6 @@ spec:
               LISTENER_PORT: 10000
               BAUD_RATE: 115200
               SERIAL_DEVICE: "/dev/ttyUSB0"
-            affinity:
-              nodeAffinity:
-                requiredDuringSchedulingIgnoredDuringExecution:
-                  nodeSelectorTerms:
-                    - matchExpressions:
-                        - key: nutech.feature.node.kubernetes.io/alarmdecoder
-                          operator: In
-                          values:
-                            - "true"
             securityContext:
               privileged: true
             resources:
