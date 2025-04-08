@@ -6,7 +6,7 @@ metadata:
   name: grafana
   namespace: monitoring
 spec:
-  interval: 15m
+  interval: 1h
   chart:
     spec:
       chart: grafana
@@ -15,18 +15,13 @@ spec:
         kind: HelmRepository
         name: grafana-charts
         namespace: flux-system
-  maxHistory: 3
   install:
-    createNamespace: true
     remediation:
-      retries: 3
-    timeout: 15m
+      retries: -1
   upgrade:
     cleanupOnFail: true
     remediation:
       retries: 3
-  uninstall:
-    keepHistory: false
   values:
     admin:
       existingSecret: grafana-secret

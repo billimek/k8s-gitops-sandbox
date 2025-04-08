@@ -6,7 +6,7 @@ metadata:
   name: descheduler
   namespace: kube-system
 spec:
-  interval: 30m
+  interval: 1h
   chart:
     spec:
       chart: descheduler
@@ -15,17 +15,13 @@ spec:
         kind: HelmRepository
         name: kubernetes-sigs-descheduler-charts
         namespace: flux-system
-  maxHistory: 3
   install:
-    createNamespace: true
     remediation:
-      retries: 3
+      retries: -1
   upgrade:
     cleanupOnFail: true
     remediation:
       retries: 3
-  uninstall:
-    keepHistory: false
   values:
     replicas: 1 # TODO: revisit after old cluster is removed
     kind: Deployment

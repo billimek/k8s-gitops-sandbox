@@ -6,8 +6,8 @@ metadata:
   name: frigate
   namespace: default
 spec:
-  suspend: true # TODO: remove this once the old cluster is removed
-  interval: 30m
+  suspend: false # TODO: remove this once the old cluster is removed
+  interval: 1h
   chart:
     spec:
       chart: app-template
@@ -18,13 +18,11 @@ spec:
         namespace: flux-system
   install:
     remediation:
-      retries: 3
+      retries: -1
   upgrade:
     cleanupOnFail: true
     remediation:
       retries: 3
-  uninstall:
-    keepHistory: false
   values:
     controllers:
       main:

@@ -7,7 +7,7 @@ metadata:
   namespace: default
 spec:
   suspend: true
-  interval: 5m
+  interval: 1h
   chart:
     spec:
       chart: minecraft-bedrock
@@ -17,6 +17,13 @@ spec:
         name: minecraft-server-charts
         namespace: flux-system
       interval: 5m
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
   values:
     fullnameOverride: minecraft-bedrock
     persistence:

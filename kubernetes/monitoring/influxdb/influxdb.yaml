@@ -7,7 +7,7 @@ metadata:
   namespace: monitoring
 spec:
   suspend: false # TODO: remove this once the old cluster is removed
-  interval: 5m
+  interval: 1h
   chart:
     spec:
       chart: influxdb
