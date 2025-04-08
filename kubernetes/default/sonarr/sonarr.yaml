@@ -6,7 +6,7 @@ metadata:
   name: sonarr
   namespace: default
 spec:
-  suspend: false # TODO: remove this once the old cluster is removed
+  suspend: true # TODO: remove this once the old cluster is removed
   interval: 15m
   chart:
     spec:
