@@ -50,10 +50,11 @@ spec:
           name: cloudnative-pg-secret
           key: aws-secret-access-key
 
+  # TODO: comment this block out after the old cluster is deleted
   bootstrap:
     # use this to recover a net-new cluster from a backup
     recovery:
-      source: postgres-backup
+      source: postgres-backup # TODO: fix this to the real name of the backup when on the new cluster
 
     # # use this to 'migrate' from an existing cnpg cluster (e.g. "cluster-pg14") to the new cluster
     # initdb:
